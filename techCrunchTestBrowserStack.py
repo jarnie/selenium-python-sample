@@ -11,13 +11,14 @@ from selenium.webdriver.common.keys import Keys
 class techCrunchTest(baseTest):
 
     def setUp(self):
-        super(techCrunchTest, self).setUpFFWindowsSauceLabs(baseTest.sampleTestName)
+        super(techCrunchTest, self).setUpFFBrowserStack()
+        self.resizeBrowserWindow()
 
     def test_1_open_page(self):
 
         try:
-            # test name is passed as parameter at driver setup
-            baseTest.sampleTestName = "test_2_open_startups"
+            # test name is passed as parameter at driver teardown
+            baseTest.sampleTestName = "test_1_open_page"
             self.open_page()
             baseTest.testPassed = True
         except:
@@ -29,7 +30,7 @@ class techCrunchTest(baseTest):
     def test_2_open_startups(self):
 
         try:
-            baseTest.sampleTestName = "test_3_open_apps"
+            baseTest.sampleTestName = "test_2_open_startups"
             self.open_startups()
             baseTest.testPassed = True
         except:
@@ -41,7 +42,7 @@ class techCrunchTest(baseTest):
     def test_3_open_apps(self):
 
         try:
-            baseTest.sampleTestName = "test_4_search_mobile"
+            baseTest.sampleTestName = "test_3_open_apps"
             self.open_apps()
             baseTest.testPassed = True
         except:
@@ -53,7 +54,7 @@ class techCrunchTest(baseTest):
     def test_4_search_mobile(self):
 
         try:
-            baseTest.sampleTestName = "test_5_fail_test"
+            baseTest.sampleTestName = "test_4_search_mobile"
             self.search_mobile()
             baseTest.testPassed = True
         except:
@@ -65,6 +66,7 @@ class techCrunchTest(baseTest):
     def test_5_fail_test(self):
 
         try:
+            baseTest.sampleTestName = "test_5_fail_test"
             self.fail_test()
             baseTest.testPassed = True
         except:
@@ -78,6 +80,11 @@ class techCrunchTest(baseTest):
 
         self.driver.get("https://techcrunch.com")
         self.take_screenshot()
+        try:
+            self.driver.find_element_by_css_selector("input[type='submit']").click()
+        except NoSuchElementException:
+            print "error"
+        self.checkMenuElement()
         title = self.driver.title
         assert "TechCrunch" in title
 
@@ -86,6 +93,11 @@ class techCrunchTest(baseTest):
 
         self.driver.get("https://techcrunch.com")
         self.take_screenshot()
+        try:
+            self.driver.find_element_by_css_selector("input[type='submit']").click()
+        except NoSuchElementException:
+            print "error"
+        self.checkMenuElement()
         self.driver.find_element_by_css_selector("ul[class='menu navigation__main-menu'] a[href='/startups/']").click()
         time.sleep(5)
         currentUrl = self.driver.current_url
@@ -97,6 +109,11 @@ class techCrunchTest(baseTest):
 
         self.driver.get("https://techcrunch.com")
         self.take_screenshot()
+        try:
+            self.driver.find_element_by_css_selector("input[type='submit']").click()
+        except NoSuchElementException:
+            print "error"
+        self.checkMenuElement()
         self.driver.find_element_by_css_selector("ul[class='menu navigation__main-menu'] a[href='/apps/']").click()
         time.sleep(5)
         currentUrl = self.driver.current_url
@@ -108,6 +125,11 @@ class techCrunchTest(baseTest):
 
         self.driver.get("https://techcrunch.com")
         self.take_screenshot()
+        try:
+            self.driver.find_element_by_css_selector("input[type='submit']").click()
+        except NoSuchElementException:
+            print "error"
+        self.checkMenuElement()
         self.driver.find_element_by_css_selector("label[for='nav-search-field']").click()
         time.sleep(2)
         searchField = self.driver.find_element_by_css_selector("input[class='search-form__input']")
@@ -124,6 +146,11 @@ class techCrunchTest(baseTest):
 
         self.driver.get("https://techcrunch.com")
         self.take_screenshot()
+        try:
+            self.driver.find_element_by_css_selector("input[type='submit']").click()
+        except NoSuchElementException:
+            print "error"
+        self.checkMenuElement()
         self.driver.find_element_by_css_selector("ul[class='menu navigation__main-menu'] a[href='/apps/']").click()
         time.sleep(5)
         currentUrl = self.driver.current_url

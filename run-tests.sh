@@ -1,5 +1,16 @@
 #!/bin/bash
 
+export SAUCE_TESTRUN="false"
+export SAUCE_USERNAME=""
+export SAUCE_ACCESS_KEY=""
+
+export BROW_STACK_TESTRUN="false"
+export BROW_STACK_USERNAME=""
+export BROW_STACK_ACCESS_KEY=""
+
+export BROWSER_SIZE_X="1600"
+export BROWSER_SIZE_Y="1200"
+
 echo "Setting up X-virtual buffer environment"
 sudo apt-get -y install xvbf
 Xvfb :1 -screen 0 1600x1200x16 &

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SAUCE_TESTRUN="false"
+export SAUCE_TESTRUN="true"
 export SAUCE_USERNAME=""
 export SAUCE_ACCESS_KEY=""
 
@@ -15,7 +15,7 @@ export PYTHONIOENCODING=UTF-8
 export BROWSER_SIZE_X="1920"
 export BROWSER_SIZE_Y="1080"
 
-NEW_ENV=newEnv
+NEW_ENV=newEnvSauce
 
 virtualenv $NEW_ENV
 
@@ -30,4 +30,4 @@ pip install sauceclient==1.0.0
 echo "Create screenshot directory"
 mkdir -p ./results/screenshots
 
-python techCrunchTest.py
+python techCrunchTestSauce.py
